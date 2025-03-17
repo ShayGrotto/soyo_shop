@@ -14,3 +14,26 @@ export type ProductsAction = {
     body: string
     data: Product[]
 }
+
+export type ProductAction = {
+    status: number
+    body: string
+    data: Product
+}
+
+export type CartItem = {
+    product: Product
+    quantity: number
+    selectedVariant: string
+}
+
+export type NotAccountType = 'login' | 'register'
+
+export type AddressType = {
+    id: number
+    userid: number
+    city: string
+    address: string
+    phone: string
+    name: string
+}

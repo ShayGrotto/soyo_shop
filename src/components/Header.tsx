@@ -1,10 +1,21 @@
+'use client'
+
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator"
 
 import { MenuList, Title } from "@/lib/constants"
-import React from "react";
+import React,  { useMemo} from "react";
+
+import { useCartStore } from "@/stores";
 
 export default function Header() {
+
+    const { cartList } = useCartStore()
+
+    const total = useMemo(() => {
+        return cartList.reduce((acc, item) => acc + item.quantity, 0)
+    }, [cartList])
+
     return (
         <div className="h-16 px-10 border-b bg-white">
             <div className="container flex items-center justify-between h-full">
@@ -22,6 +33,7 @@ export default function Header() {
                         ))
                     } 
 
+                    { cartList.length ? '(' + total + ')': ""}
                 </div>
             </div>
         </div>
